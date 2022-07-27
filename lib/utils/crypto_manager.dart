@@ -55,11 +55,15 @@ class CryptoManager {
   Future<bool> testEncryption(String key) async {
     final prefs = await SharedPreferences.getInstance();
     final encrypted = prefs.getString(testStringPrefsKey);
-    if (encrypted == null) {
+    if (encrypted == null || encrypted.isEmpty) {
       return false;
     }
 
     final decrypted = decrypt(text: encrypted, key: key);
+    if (decrypted == null || decrypted.isEmpty) {
+      return false;
+    }
+
     return decrypted == testString;
   }
 

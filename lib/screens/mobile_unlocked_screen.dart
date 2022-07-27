@@ -354,6 +354,7 @@ class _MobileUnlockedProfileState extends State<MobileUnlockedProfile> {
                 ),
               ),
               onTap: () async {
+                CryptoManager.aesPassword = '';
                 Navigator.pushReplacement(
                   context,
                   MaterialPageRoute(
